@@ -24,7 +24,7 @@ class Piece:
         self.rank = 'None'
 
     def __eq__(self, other):
-        return True if other is not None and self.pos == other.pos else False
+        return other is not None and self.pos == other.pos
 
 
 class Player:
@@ -358,11 +358,12 @@ def distance(p1, p2):
 
 def valid(pos, board):
     if np.array_equal(board[pos[1]-1, pos[0]-1], np.array([0, 0, 0, 255])):
-        return True if PLAY_SQUARES == 'black' else False
+        return PLAY_SQUARES == 'black'
+    return False
 
 
 def is_diag(p1, p2):
-    return True if (p1[0] - p2[0])**2 == (p1[1] - p2[1])**2 else False
+    return (p1[0] - p2[0])**2 == (p1[1] - p2[1])**2
 
 
 def main():
